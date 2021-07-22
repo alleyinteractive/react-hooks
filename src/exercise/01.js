@@ -7,7 +7,6 @@ function Greeting(props) {
   const [name, setName] = React.useState(props.initialName);
 
   function handleChange(event) {
-    console.log(event.target.value);
     setName(event.target.value);
   }
 
