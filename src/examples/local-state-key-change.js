@@ -2,25 +2,25 @@
 // flexible localStorage hook - changing the key in localStorage
 // http://localhost:3000/isolated/examples/local-state-key-change.js
 
-import * as React from 'react'
-import {useLocalStorageState} from '../utils'
+import * as React from 'react';
+import { useLocalStorageState } from '../utils';
 
-function Greeting({initialName = ''}) {
-  const [key, setKey] = React.useState('name')
-  const [name, setName] = useLocalStorageState(key, initialName)
+function Greeting({ initialName = '' }) {
+  const [key, setKey] = React.useState('name');
+  const [name, setName] = useLocalStorageState(key, initialName);
 
   function handleClick() {
-    if (key === 'name') {
-      setKey('firstName')
-    } else if (key === 'firstName') {
-      setKey('Name')
+    if ('name' === key) {
+      setKey('firstName');
+    } else if ('firstName' === key) {
+      setKey('Name');
     } else {
-      setKey('name')
+      setKey('name');
     }
   }
 
   function handleChange(event) {
-    setName(event.target.value)
+    setName(event.target.value);
   }
 
   return (
@@ -32,9 +32,14 @@ function Greeting({initialName = ''}) {
         <label htmlFor="name">Name: </label>
         <input value={name} onChange={handleChange} id="name" />
       </form>
-      {name ? <strong>Hello {name}</strong> : 'Please type your name'}
+      {name ? (
+        <strong>
+          Hello
+          {name}
+        </strong>
+      ) : 'Please type your name'}
     </div>
-  )
+  );
 }
 
-export default Greeting
+export default Greeting;

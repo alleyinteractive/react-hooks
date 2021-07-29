@@ -1,39 +1,38 @@
 // useEffect: HTTP requests
 // http://localhost:3000/isolated/final/06.js
 
-import * as React from 'react'
+import * as React from 'react';
 import {
   fetchPokemon,
   PokemonInfoFallback,
   PokemonForm,
   PokemonDataView,
-} from '../pokemon'
+} from '../pokemon';
 
-function PokemonInfo({pokemonName}) {
-  const [pokemon, setPokemon] = React.useState(null)
+function PokemonInfo({ pokemonName }) {
+  const [pokemon, setPokemon] = React.useState(null);
 
   React.useEffect(() => {
-    if (!pokemonName) {
-      return
+    if (! pokemonName) {
+      return;
     }
-    setPokemon(null)
-    fetchPokemon(pokemonName).then(pokemon => setPokemon(pokemon))
-  }, [pokemonName])
+    setPokemon(null);
+    fetchPokemon(pokemonName).then((pokemon) => setPokemon(pokemon));
+  }, [pokemonName]);
 
-  if (!pokemonName) {
-    return 'Submit a pokemon'
-  } else if (!pokemon) {
-    return <PokemonInfoFallback name={pokemonName} />
-  } else {
-    return <PokemonDataView pokemon={pokemon} />
+  if (! pokemonName) {
+    return 'Submit a pokemon';
+  } if (! pokemon) {
+    return <PokemonInfoFallback name={pokemonName} />;
   }
+  return <PokemonDataView pokemon={pokemon} />;
 }
 
 function App() {
-  const [pokemonName, setPokemonName] = React.useState('')
+  const [pokemonName, setPokemonName] = React.useState('');
 
   function handleSubmit(newPokemonName) {
-    setPokemonName(newPokemonName)
+    setPokemonName(newPokemonName);
   }
 
   return (
@@ -44,7 +43,7 @@ function App() {
         <PokemonInfo pokemonName={pokemonName} />
       </div>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
